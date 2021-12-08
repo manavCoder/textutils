@@ -1,18 +1,32 @@
-import React from "react";
+import React, {useState} from "react";
 
-export default function TextForm() {
+export default function TextForm(props) {
+  const handleUPClick = ()=> {
+      console.log("Uppercase was clicked");
+      let newText = text.toUpperCase();
+      setText(newText);
+  }
+  
+  const handleOnChange = (event)=> {
+      console.log("On Change");
+      setText(event.target.value);
+  }
+  const[text, setText] = useState('Enter text here');
+//   text = "dsjfvnsj" // Wrong way to change the state
+//   setText("Amazing text"); // Correct way to change the state
   return (
     <div>
+        <h1>{props.heading}</h1>
       <div className="mb-3">
-        <label for="myBox" className="form-label">
-          Example textarea
-        </label>
         <textarea
           className="form-control"
           id="myBox"
-          rows="3"
+          rows="8" 
+          value = {text}
+          onChange={handleOnChange}
         ></textarea>
       </div>
+      <button className="btn btn-primary" onClick={handleUPClick}>Convert to Uppercase</button>
     </div>
   );
 }
