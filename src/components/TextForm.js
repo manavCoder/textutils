@@ -5,12 +5,14 @@ export default function TextForm(props) {
     //   console.log("Uppercase was clicked");
     let newText = text.toUpperCase();
     setText(newText);
+    props.showAlert("Converted to Upper Case", "success");
   };
 
   const handleLOClick = () => {
     //   console.log("Lowercase was clicked");
     let newText = text.toLowerCase();
     setText(newText);
+    props.showAlert("Converted to Lower Case", "success");
   };
 
   // const [myFont, setmyFont] = useState({
@@ -36,6 +38,8 @@ export default function TextForm(props) {
     // setmyFont({
     //   fontFamily: "Times New Roman",
     // });
+    props.showAlert("Text Cleared!", "success");
+
   };
 
   const handleCopyClick = () => {
@@ -43,12 +47,16 @@ export default function TextForm(props) {
     textCopy.select();
     // textCopy.setSelectionRange(0, 9999);
     navigator.clipboard.writeText(textCopy.value);
+    props.showAlert("Text Copied!", "success");
+
   };
 
   const handleRemExtSpacesClick = () => {
     // let textCorrect = document.getElementById('myBox');
     let textToWordsArr = text.split(/[ ]+/);  // Splitting into an array
     setText(textToWordsArr.join(" ")); // Joining the elements of the array with one space b/w 2 words and setting the text by usnig setText-useState   
+    props.showAlert("Extra Spaces Removed!", "success");
+
   }
 
   const handleOnChange = (event) => {
