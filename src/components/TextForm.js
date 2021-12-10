@@ -18,9 +18,17 @@ export default function TextForm(props) {
   })
   const handleCALClick = ()=> {
     //   console.log("Lowercase was clicked");
+    if (myFont.fontFamily === 'Times New Roman') {
       setmyFont({
         fontFamily: 'Courier'
       })
+    }
+    
+    else {
+      setmyFont({
+        fontFamily: 'Times New Roman'
+      })
+    }
   }
   
   const handleClrClick = ()=> {
