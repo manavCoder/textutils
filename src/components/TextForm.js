@@ -12,14 +12,35 @@ export default function TextForm(props) {
       let newText = text.toLowerCase();
       setText(newText);
   }
+
+  const [myFont, setmyFont] = useState({
+    fontFamily: 'Times New Roman'
+  })
+  const handleCALClick = ()=> {
+    //   console.log("Lowercase was clicked");
+      setmyFont({
+        fontFamily: 'Courier'
+      })
+  }
+  
+  const handleClrClick = ()=> {
+    //   console.log("Lowercase was clicked");
+      let newText = "";
+      setText(newText);
+      setmyFont({
+        fontFamily: 'Times New Roman'
+      })
+  }
   
   const handleOnChange = (event)=> {
       console.log("On Change");
       setText(event.target.value);
   }
+
   const[text, setText] = useState('Enter text here');
 //   text = "dsjfvnsj" // Wrong way to change the state
 //   setText("Amazing text"); // Correct way to change the state
+  
   return (
       <>
     <div className="container">
@@ -31,10 +52,13 @@ export default function TextForm(props) {
           rows="8" 
           value = {text}
           onChange={handleOnChange}
+          style={myFont}
         ></textarea>
       </div>
       <button className="btn btn-primary mx-2" onClick={handleUPClick}>Convert to Uppercase</button>
       <button className="btn btn-primary mx-2" onClick={handleLOClick}>Convert to Lowercase</button>
+      <button className="btn btn-primary mx-2" onClick={handleCALClick}>Calligraphic Font</button>
+      <button className="btn btn-primary mx-2" onClick={handleClrClick}>Clear Text</button>
     </div>
     <div className="container my-3">
         <h2>Your text summary</h2>
