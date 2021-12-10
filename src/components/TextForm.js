@@ -13,29 +13,29 @@ export default function TextForm(props) {
     setText(newText);
   };
 
-  const [myFont, setmyFont] = useState({
-    fontFamily: "Times New Roman",
-  });
-  const handleCALClick = () => {
-    //   console.log("Lowercase was clicked");
-    if (myFont.fontFamily === "Times New Roman") {
-      setmyFont({
-        fontFamily: "Courier",
-      });
-    } else {
-      setmyFont({
-        fontFamily: "Times New Roman",
-      });
-    }
-  };
+  // const [myFont, setmyFont] = useState({
+  //   fontFamily: "Times New Roman",
+  // });
+  // const handleCALClick = () => {
+  //   //   console.log("Lowercase was clicked");
+  //   if (myFont.fontFamily === "Times New Roman") {
+  //     setmyFont({
+  //       fontFamily: "Courier",
+  //     });
+  //   } else {
+  //     setmyFont({
+  //       fontFamily: "Times New Roman",
+  //     });
+  //   }
+  // };
 
   const handleClrClick = () => {
     //   console.log("Lowercase was clicked");
     let newText = "";
     setText(newText);
-    setmyFont({
-      fontFamily: "Times New Roman",
-    });
+    // setmyFont({
+    //   fontFamily: "Times New Roman",
+    // });
   };
 
   const handleCopyClick = () => {
@@ -62,7 +62,7 @@ export default function TextForm(props) {
 
   return (
     <>
-      <div className="container">
+      <div className="container" style={{color: props.mode === 'dark' ? 'white' : 'black'}}>
         <h1>{props.heading}</h1>
         <div className="mb-3">
           <textarea
@@ -71,7 +71,7 @@ export default function TextForm(props) {
             rows="8"
             value={text}
             onChange={handleOnChange}
-            style={myFont}
+            style={{backgroundColor: props.mode === 'dark' ? 'black' : 'white', color: props.mode === 'dark' ? 'white' : 'black'}}
           ></textarea>
         </div>
         <button className="btn btn-primary mx-2" onClick={handleUPClick}>
@@ -80,9 +80,9 @@ export default function TextForm(props) {
         <button className="btn btn-primary mx-2" onClick={handleLOClick}>
           Convert to Lowercase
         </button>
-        <button className="btn btn-primary mx-2" onClick={handleCALClick}>
+        {/* <button className="btn btn-primary mx-2" onClick={handleCALClick}>
           Calligraphic Font
-        </button>
+        </button> */}
         <button className="btn btn-primary mx-2" onClick={handleClrClick}>
           Clear Text
         </button>
@@ -93,14 +93,14 @@ export default function TextForm(props) {
           Remove Extra Spaces
         </button>
       </div>
-      <div className="container my-3">
+      <div className="container my-3" style={{color: props.mode === 'dark' ? 'white' : 'black'}}>
         <h2>Your text summary</h2>
         <p>
           {text.split(" ").length} words, {text.length} characters
         </p>
         <p>{0.008 * text.split(" ").length} minutes to read</p>
         <h3>Preview</h3>
-        <p>{text}</p>
+        <p>{text.length>0?text:"Enter something in the textbox above to preview it here"}</p>
       </div>
     </>
   );
