@@ -7,7 +7,8 @@ function Alert(props) {
 
   }
   return (
-    props.alert && // if props.alert is NOT null, only then the code block next to the double & will be avaluated otherwise NOT
+    <div style={{height: '50px'}}>
+    {props.alert && // if props.alert is NOT null, only then the code block next to the double & will be avaluated otherwise NOT
     <div
       className={`alert alert-${props.alert.type} alert-dismissible fade show`}
       role="alert"
@@ -19,6 +20,7 @@ function Alert(props) {
         data-bs-dismiss="alert"
         aria-label="Close"
       ></button> */}
+    </div>}
     </div>
   );
 }
