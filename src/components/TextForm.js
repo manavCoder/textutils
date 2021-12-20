@@ -43,11 +43,12 @@ export default function TextForm(props) {
   };
 
   const handleCopyClick = () => {
-    let textCopy = document.getElementById('myBox');
-    textCopy.select();
+    // let textCopy = document.getElementById('myBox');
+    // textCopy.select();
     // textCopy.setSelectionRange(0, 9999);
-    navigator.clipboard.writeText(textCopy.value);
-    document.getSelection().removeAllRanges();
+    // navigator.clipboard.writeText(textCopy.value);
+    // document.getSelection().removeAllRanges();
+    navigator.clipboard.writeText(text);
     props.showAlert("Text Copied!", "success");
 
   };
@@ -61,7 +62,8 @@ export default function TextForm(props) {
   }
 
   const handleOnChange = (event) => {
-    console.log("On Change");
+    // console.log("On Change");
+
     setText(event.target.value);
   };
 
@@ -106,7 +108,7 @@ export default function TextForm(props) {
       <div className="container my-3" style={{color: props.mode === 'dark' ? 'white' : 'black'}}>
         <h2>Your text summary</h2>
         <p>
-          {text.split(" ").filter((element)=>{return element.length!==0}).length} words, {text.length} characters
+          {text.split("/\s+/").filter((element)=>{return element.length!==0}).length} words, {text.length} characters
         </p>
         <p>{0.008 * text.split(" ").filter((element)=>{return element.length!==0}).length} minutes to read</p>
         <h3>Preview</h3>
